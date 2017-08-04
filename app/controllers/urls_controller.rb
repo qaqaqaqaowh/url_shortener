@@ -16,6 +16,7 @@ class UrlsController < ApplicationController
   		@url = Url.new(url_params)
   		@url.shorten
   		if @url.save
+  			# redirect_to url_path(@url)
       		redirect_to @url
   		else
       		render 'new'
@@ -25,7 +26,7 @@ class UrlsController < ApplicationController
 	def destroy
 		@url = Url.find(params[:id])
 		@url.destroy
-		redirect_to "/"
+		redirect_to root_path
 	end
 
 	def short
